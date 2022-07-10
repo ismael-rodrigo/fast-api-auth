@@ -1,9 +1,9 @@
 from fastapi import Depends, FastAPI
-from database import Base, SessionLocal
-from models import UserModel
-from schemas import ShowUser, User
+from .database import Base, SessionLocal
+from .models import UserModel
+from .schemas import ShowUser, User
 from sqlalchemy.orm import Session
-from database import engine
+from .database import engine
 
 
 Base.metadata.create_all(bind=engine)
