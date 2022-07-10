@@ -1,3 +1,4 @@
+from datetime import date
 from fastapi import Depends, FastAPI
 from .database import Base, SessionLocal
 from .models import UserModel
@@ -6,7 +7,7 @@ from sqlalchemy.orm import Session
 from .database import engine
 
 
-Base.metadata.create_all(bind=engine)
+#Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI()
@@ -25,9 +26,9 @@ def get_db():
 
 
 
-@app.post('/user' ,response_model=ShowUser)
-def create_user(request:User , db: Session = Depends(get_db)):
-    new_user = UserModel( name=request.name ,age= request.age)
+@app.post('/user' ,response_model=ShowUser , status_code=201)
+async def create_user(request:User , db: Session = Depends(get_db)):
+    new_user = UserModel(**request.dict())
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
