@@ -6,7 +6,7 @@ from app.database.session import session_db
 from app.auth.token_provider import verify_access_token
 from app.models.user_model import UserModel
 
-oauth2_schema = OAuth2PasswordBearer(tokenUrl='get-token')
+oauth2_schema = OAuth2PasswordBearer(tokenUrl='auth/token')
 
 
 

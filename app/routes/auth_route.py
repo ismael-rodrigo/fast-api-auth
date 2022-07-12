@@ -14,7 +14,7 @@ from app.schemas.user_schema import ShowUser, User
 
 router = APIRouter()
 
-@router.post('/get-token')
+@router.post('/token')
 def get_token(credentials:LoginToken ,db: Session = session_db() ):
     user = db.query(UserModel).filter(UserModel.username == credentials.username).first()
     if not user:
@@ -27,6 +27,8 @@ def get_token(credentials:LoginToken ,db: Session = session_db() ):
     return token
 
 
-@router.get('/me' ,response_model=ShowUser)
+
+@router.get('/verify' ,response_model=ShowUser)
 def me(user:User = Depends(user_logged) ):
     return user
+
