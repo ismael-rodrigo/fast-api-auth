@@ -13,7 +13,7 @@ class Settings(BaseModel):
     REFRESH_EXPIRES_IN_MIN: int = 30
 
 
-    DATABASE_URL: str = config('DATABASE_URL') if not DEBUG else 'sqlite:///./database.db'
+    DATABASE_URL: str = config('DATABASE_URL_PROD') if not DEBUG else config('DATABASE_URL_DEV')
 
 
 settings = Settings()
