@@ -29,6 +29,8 @@ def get_all_user(db: Session = Depends(get_db)):
     user = db.query(UserModel).all()
     return user
 
+
+
 @router.get('/user/{id}')
 def get_user(id:int ,  db: Session = Depends(get_db)):
     user = db.query(UserModel).filter(UserModel.id == id).first()

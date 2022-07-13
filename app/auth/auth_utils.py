@@ -13,9 +13,9 @@ def user_logged(token:str = Depends(oauth2_schema) , db: Session = Depends(get_d
     try:
         data = verify_access_token(token)
     except JWTError:
-        raise HTTPException(status.HTTP_401_UNAUTHORIZED)
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED , detail='token invalid')
 
-    user = db.query(UserModel).filter(UserModel.username == data).first()
+    user = db.query(UserModel).filter(UserModel.id == data).first()
     if not user:
-        raise HTTPException(status.HTTP_401_UNAUTHORIZED)    
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED , detail='token invalid')    
     return user
