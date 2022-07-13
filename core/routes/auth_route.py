@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException ,status
 from jose import JWTError
-from app.auth.auth_utils import user_logged
-from app.auth.hash_provider import verify_password
-from app.auth.token_provider import create_access_token ,refresh_token
-from app.database.session import get_db
-from app.models.user_model import UserModel
-from app.schemas.auth_login_schema import LoginToken
+from core.auth.auth_utils import user_logged
+from core.auth.hash_provider import verify_password
+from core.auth.token_provider import create_access_token ,refresh_token
+from core.database.session import get_db
+from core.models.user_model import UserModel
+from core.schemas.auth_login_schema import LoginToken
 from sqlalchemy.orm import Session
-from app.schemas.token_schemas import RefreshToken
-from app.schemas.user_schema import ShowUser, User
+from core.schemas.token_schemas import RefreshToken
+from core.schemas.user_schema import ShowUser, User
 
 
 router = APIRouter()

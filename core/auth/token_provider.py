@@ -1,12 +1,13 @@
 from datetime import datetime, timedelta
 from jose import jwt
+from core.settings import settings
 
-SECRET_KEY = '0f1c88f36f9edd1ed0f56e4d8d1674e17a1bc6fab6803a7125789f7b4cf7dc05'
-REFRESH_SECRET_KEY = '1eb729eec81288b05cf7abd18fcdf594935e6c1bb0aa638c7f41b7b25d8e4911'
+SECRET_KEY = settings.SECRET_KEY
+REFRESH_SECRET_KEY = settings.REFRESH_SECRET_KEY
 
-ALGORITHM = 'HS256'
-ACCESS_EXPIRES_IN_MIN = 10
-REFRESH_EXPIRES_IN_MIN = 40
+ALGORITHM = settings.ALGORITHM
+ACCESS_EXPIRES_IN_MIN = settings.ACCESS_EXPIRES_IN_MIN
+REFRESH_EXPIRES_IN_MIN = settings.REFRESH_EXPIRES_IN_MIN
 
 
 def create_access_token(_data:dict):

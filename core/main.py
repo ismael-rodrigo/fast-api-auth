@@ -1,5 +1,5 @@
 
-from app.routes import user_route , auth_route
+from core.routes import user_route , auth_route
 
 
 

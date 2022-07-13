@@ -1,9 +1,9 @@
 from datetime import date
 from fastapi import APIRouter, Depends, FastAPI, Security
 from pydantic import BaseModel
-from app.auth.hash_provider import get_password_hash, verify_password
+from core.auth.hash_provider import get_password_hash, verify_password
 
-from app.database.session import get_db
+from core.database.session import get_db
 from ..models.user_model import UserModel
 from ..schemas.user_schema import ShowUser, User
 from sqlalchemy.orm import Session
@@ -24,14 +24,14 @@ async def create_user(request:User , db: Session = Depends(get_db) ):
     return new_user
 
 
-@router.get('/user')
+@router.get('/user' ,response_model=list[ShowUser])
 def get_all_user(db: Session = Depends(get_db)):
     user = db.query(UserModel).all()
     return user
 
 
 
-@router.get('/user/{id}')
+@router.get('/user/{id}' ,response_model=ShowUser)
 def get_user(id:int ,  db: Session = Depends(get_db)):
     user = db.query(UserModel).filter(UserModel.id == id).first()
     return user
