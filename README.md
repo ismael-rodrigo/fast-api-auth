@@ -1,7 +1,9 @@
 # fast-api model
 
-## git clone https://github.com/ismael-rodrigo/learning-fast-api.git
+## RUN API
 
-## pip install -r requirements.txt
+git clone https://github.com/ismael-rodrigo/learning-fast-api.git
 
-## python run.py
+pip install -r requirements.txt
+
+python run.py
